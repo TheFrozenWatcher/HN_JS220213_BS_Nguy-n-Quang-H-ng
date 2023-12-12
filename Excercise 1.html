@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * Function tìm số lớn nhất và duy nhất trong 1 chuỗi
+       * @param {*} String chuỗi giá trị được nhập vào
+       * @returns Giá trị lớn nhất và duy nhất
+       * Auth: NQH 12/12/2023
+       */
+
+      function findMaxUniqueNumber(String) {
+        //  Chuyển dãy số nhập vào thành chữ số
+
+        const array = String.split(/\s+/).map(Number);
+
+        // Kiểm tra xem chuỗi có đúng 5 chữ số không
+        if (array.length !== 5) {
+          return "Chuỗi nhập vào phải có 5 chữ số.";
+        }
+        // Lọc các số bị trùng
+        function removeAllDuplicates(array) {
+          const counts = {};
+
+          // Tìm số lần xuất hiện của từng phần tử
+          array.forEach((value) => {
+            counts[value] = (counts[value] || 0) + 1;
+          });
+
+          // Lọc các số xuất hiện trên 1 lần
+          const uniqueValues = array.filter((value) => counts[value] === 1);
+
+          return uniqueValues;
+        }
+
+        // Trả về mảng đã bỏ đi các số bị trùng
+        let uniqueNumbers = removeAllDuplicates(array);
+
+        //Sắp xếp các số bị trùng theo thứ tự từ lớn đến bé
+        const sortedUniqueNumbers = uniqueNumbers.sort((a, b) => b - a);
+        //Nếu mảng giá trị nhận về có độ dài lớn hơn hoặc bằng 1 thì số lớn nhất có giá trị là số thứ nhất trong mảng
+        if (sortedUniqueNumbers.length >= 1) {
+          return `Số lớn nhất và duy nhất là: ${sortedUniqueNumbers[0]}`;
+        } else {
+          return `Không có giá trị lớn nhất và duy nhất`;
+        }
+      }
+      // Hàm nhập và trả lại kết quả là số lớn nhất và duy nhất trong chuỗi lấy từ trình duyệt
+
+      function handleInput() {
+        const input = prompt("Nhập chuỗi 5 số:");
+        const result = findMaxUniqueNumber(input);
+        alert(result);
+      }
+
+      //Thực hiện lấy giá trị từ người dùng
+      handleInput();
+    </script>
+  </body>
+</html>

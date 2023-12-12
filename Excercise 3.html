@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <table border="1px">
+      <tbody id="heart-output" class="heart-output">
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      function drawHeart() {
+        const rows = 6;
+        let output = "";
+
+        for (let i = 0; i < rows; i++) {
+          let line = "";
+          for (let j = 0; j < rows; j++) {
+            if (
+              (i === 0 && (j === 0 || j === 3 || j === 5)) ||
+              (i === 1 && (j === 0 || j === 5)) ||
+              (i === 2 && (j === 0 || j === 3 || j === 4 || j === 5)) ||
+              (i === 3 && (j === 0 || j === 2 || j === 5)) ||
+              (i === 4 && (j === 0 || j === 1 || j === 3 || j === 5)) ||
+              (i === 5 && (j === 0 || j === 4))
+            ) {
+              line += "*";
+            } else {
+              line += " ";
+            }
+          }
+          output += `<tr><td>${line}</td></tr>`;
+        }
+
+        const heartOutputElement = document.getElementById("heart-output");
+        if (heartOutputElement) {
+          heartOutputElement.innerHTML = output;
+        } else {
+          console.error('Element with ID "heart-output" not found.');
+        }
+      }
+
+      // Call the function to draw the heart
+      drawHeart();
+    </script>
+  </body>
+</html>

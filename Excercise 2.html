@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * Hàm tính tổng tất cả các số từ một chuỗi số
+       * @param {string} inputString Chuỗi
+       * @returns {sum} Tổng tất cả các số
+       */
+      function sum(String) {
+        array = String.split("").map(Number);
+        let sum = 0;
+        for (let i = 0; i < array.length; i++) {
+          sum += array[i];
+        }
+        return sum;
+      }
+
+      // Hàm nhập và trả lại kết quả là tổng các chữ số trong chuỗi lấy từ trình duyệt
+
+      function handleInput() {
+        const input = prompt("Nhập chuỗi chữ số nguyên:");
+        const result = sum(input);
+        if (!result) {
+          alert("Chuỗi nhập vào phải là các chữ số nguyên");
+        } else {
+          alert(result);
+        }
+      }
+
+      //Thực hiện lấy giá trị từ người dùng
+      handleInput();
+    </script>
+  </body>
+</html>

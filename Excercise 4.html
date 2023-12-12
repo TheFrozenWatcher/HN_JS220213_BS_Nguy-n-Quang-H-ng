@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * Trả về chuỗi ký tự đã xóa các chữ số
+       * @param {*} String chuỗi ký tự cần xóa chữ số
+       * @returns Chuối ký tự đã xóa chữ số
+       * Auth: NQH 12/12/2023
+       */
+
+      function removeNumber(String) {
+        // Tách chuỗi ra thành 1 mảng chia theo từng ký tự
+        const array = String.split("");
+        // Tạo 1 mảng mới đã loại bỏ các giá trị là chữ số
+        const newArray = array.filter((value) => Number.isNaN(Number(value)));
+        const newString = newArray.join("");
+        return newString;
+      }
+
+      // Hàm nhập chuỗi giá trị từ người dùng
+      function handleInput() {
+        const input = prompt("Nhập chuỗi cần xóa chữ số:");
+        const result = removeNumber(input);
+        if (result === "") {
+          alert("Chuỗi trả về sau khi xóa các chữ số là chuỗi rỗng");
+        } else {
+          alert(`Chuỗi trả về sau khi xóa bỏ các chữ số là ${result}`);
+        }
+      }
+
+      //Thực hiện lấy giá trị từ người dùng
+      handleInput();
+    </script>
+  </body>
+</html>
