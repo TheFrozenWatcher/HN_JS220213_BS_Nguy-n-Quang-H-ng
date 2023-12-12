@@ -5,47 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      body {
-        font-size: 20px;
+      td {
+        width: 20px;
+        height: 20px;
+        text-align: center;
       }
     </style>
   </head>
   <body>
     <table border="1px">
-      <tbody id="heart-output" class="heart-output">
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </tbody>
+      <tbody id="heart-output"></tbody>
     </table>
+
     <script>
       function drawHeart() {
         const rows = 6;
+        const columns = 7;
         let output = "";
 
         for (let i = 0; i < rows; i++) {
-          let line = "";
-          for (let j = 0; j < rows; j++) {
+          let row = "<tr>";
+          for (let j = 0; j < columns; j++) {
             if (
-              (i === 0 && (j === 0 || j === 3 || j === 5)) ||
-              (i === 1 && (j === 0 || j === 5)) ||
-              (i === 2 && (j === 0 || j === 3 || j === 4 || j === 5)) ||
-              (i === 3 && (j === 0 || j === 2 || j === 5)) ||
-              (i === 4 && (j === 0 || j === 1 || j === 3 || j === 5)) ||
-              (i === 5 && (j === 0 || j === 4))
+              (i === 0 && (j === 1 || j === 2 || j === 4 || j === 5)) ||
+              (i === 1 && (j === 0 || j === 3 || j === 6)) ||
+              (i === 2 && (j === 0 || j === 6)) ||
+              (i === 3 && (j === 1 || j === 5)) ||
+              (i === 4 && (j === 2 || j === 3 || j === 4)) ||
+              (i === 5 && j === 3)
             ) {
-              line += "*";
+              row += "<td>*</td>";
             } else {
-              line += " ";
+              row += "<td></td>";
             }
           }
-          output += `<tr><td>${line}</td></tr>`;
+          row += "</tr>";
+          output += row;
         }
 
         const heartOutputElement = document.getElementById("heart-output");
@@ -56,7 +51,7 @@
         }
       }
 
-      // Call the function to draw the heart
+      // Gọi hàm
       drawHeart();
     </script>
   </body>
